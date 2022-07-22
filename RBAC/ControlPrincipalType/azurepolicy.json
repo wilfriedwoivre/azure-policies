@@ -1,0 +1,49 @@
+{
+    "properties": {
+        "displayName": "AzSecure-RBAC-ControlPrincipalType",
+        "description": "Control principal type to the role assignments",
+        "mode": "All",
+        "parameters": {
+            "allowedPrincipalType":{
+                "type": "array",
+                "metadata": {
+                    "description":"Valid principal type to the role assignments",
+                    "displayName": "Allowed Principal Type"
+                },
+                "allowedValues": [
+                    "User",
+                    "Group",
+                    "ServicePrincipal"
+                ]
+            },
+            "effect": {
+                "type": "string",
+                "metadata": {
+                    "description": "Effect of the policy",
+                    "displayName": "Effect"
+                },
+                "allowedValues": [
+                    "Audit",
+                    "Deny"
+                ]
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOF": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Authorization/roleAssignments"
+                    },
+                    {
+                        "field": "Microsoft.Authorization/roleAssignments/principalType",
+                        "notIn": "[parameters('allowedPrincipalType')]"
+                    }
+                ]
+            },
+                "then": {
+                    "effect": "[parameters('effect')]"
+            }
+        }
+    }
+}
