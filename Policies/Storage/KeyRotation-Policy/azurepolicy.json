@@ -1,0 +1,46 @@
+{
+  "properties": {
+    "displayName": "AzSecure-Storage-SASKeyPolicy",
+    "description": "Control SAS Key policy configuration",
+    "mode": "All",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "AzSecure-Storage"
+    },
+    "parameters": {
+      "maxAllowedPeriodInDays": {
+        "type": "Integer",
+        "metadata": {
+          "description": "Maximum allowed period in days",
+          "displayName": "Maximum value for Key Expiration (in days)"
+        },
+        "defaultValue": 90
+      },
+      "effect": {
+        "type": "string",
+        "metadata": {
+          "description": "Effect of the policy",
+          "displayName": "Effect"
+        },
+        "allowedValues": ["Audit", "Deny"]
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/keyPolicy.keyExpirationPeriodInDays",
+            "lessOrEquals": "[parameters('maxAllowedPeriodInDays')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    }
+  }
+}
