@@ -1,7 +1,7 @@
 {
   "properties": {
-    "displayName": "AzSecure-Storage-SASKeyPolicy",
-    "description": "Control SAS Key policy configuration",
+    "displayName": "AzSecure-Storage-KeyPolicy",
+    "description": "Control Key Rotation policy configuration",
     "mode": "All",
     "metadata": {
       "version": "1.0.0",
