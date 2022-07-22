@@ -31,7 +31,7 @@
         ]
       },
       "then": {
-        "effect": "[parameter('effect')]"
+        "effect": "[parameters('effect')]"
       }
     }
   }
