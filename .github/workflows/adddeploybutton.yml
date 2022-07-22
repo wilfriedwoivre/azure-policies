@@ -40,10 +40,11 @@ jobs:
 
     - name: generate-deploy-button
       id: generate-deploy-button
-      uses: wilfriedwoivre/action-deploy-azure-button@v1.1
+      uses: wilfriedwoivre/action-deploy-azure-button@v2.0
       env:
         templatePath: '${{ matrix.folder }}/azurepolicy.json'
         markdownPath: '${{ matrix.folder }}/README.md'
+        targetAzureUrl: 'https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/'
       
 
     - name: debug
