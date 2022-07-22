@@ -6,7 +6,7 @@ def findAllQueries(dirPath):
     result = []
 
     for (dirPath, dirNames, fileNames) in walk(dirPath):
-        if ("query.txt" in fileNames):
+        if ("azurepolicy.json" in fileNames):
             result.append(dirPath)
         for dirName in dirNames:
             result += findAllQueries(dirName)
