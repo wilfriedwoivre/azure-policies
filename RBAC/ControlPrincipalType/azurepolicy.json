@@ -3,6 +3,10 @@
         "displayName": "AzSecure-RBAC-ControlPrincipalType",
         "description": "Control principal type to the role assignments",
         "mode": "All",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "AzSecure-RBAC"
+        },
         "parameters": {
             "allowedPrincipalType":{
                 "type": "array",
