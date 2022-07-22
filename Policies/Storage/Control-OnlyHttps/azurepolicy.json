@@ -1,0 +1,38 @@
+{
+  "properties": {
+    "displayName": "AzSecure-Storage-OnlyHttps",
+    "description": "Control only https parameter for the storage account",
+    "mode": "All",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "AzSecure-Storage"
+    },
+    "parameters": {
+      "effect": {
+        "type": "string",
+        "metadata": {
+          "description": "Effect of the policy",
+          "displayName": "Effect"
+        },
+        "allowedValues": ["Audit", "Deny"]
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly",
+            "equals": false
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameter('effect')]"
+      }
+    }
+  }
+}
