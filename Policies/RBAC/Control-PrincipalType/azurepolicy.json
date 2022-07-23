@@ -18,7 +18,8 @@
                     "User",
                     "Group",
                     "ServicePrincipal"
-                ]
+                ],
+                "defaultValue": [ "ServicePrincipal", "Group"]
             },
             "effect": {
                 "type": "string",
@@ -29,7 +30,8 @@
                 "allowedValues": [
                     "Audit",
                     "Deny"
-                ]
+                ],
+                "defaultValue": "Audit"
             }
         },
         "policyRule": {

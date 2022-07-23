@@ -22,7 +22,8 @@
           "description": "Effect of the policy",
           "displayName": "Effect"
         },
-        "allowedValues": ["Audit", "Deny"]
+        "allowedValues": ["Audit", "Deny"],
+        "defaultValue": "Audit"
       }
     },
     "policyRule": {
