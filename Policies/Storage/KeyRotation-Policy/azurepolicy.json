@@ -35,7 +35,7 @@
           },
           {
             "field": "Microsoft.Storage/storageAccounts/keyPolicy.keyExpirationPeriodInDays",
-            "lessOrEquals": "[parameters('maxAllowedPeriodInDays')]"
+            "greaterOrEquals": "[parameters('maxAllowedPeriodInDays')]"
           }
         ]
       },
