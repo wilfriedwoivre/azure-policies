@@ -6,3 +6,4 @@
 | Name | Type | Allowed Values |
 | -- | -- | -- |
 | effect | string | <ul><li>Audit</li><li>Deny</li></ul> |
+| minimalTLSVersion | string | <ul><li>TLS1_0</li><li>TLS1_1</li><li>TLS1_2</li></ul>
