@@ -1,0 +1,61 @@
+{
+    "properties": {
+      "displayName": "AzSecure-EventHub-MinimalTLSVersion",
+      "description": "Control only https parameter for event hub",
+      "mode": "All",
+      "metadata": {
+        "version": "1.0.0",
+        "category": "AzSecure-EventHub"
+      },
+      "parameters": {
+        "effect": {
+          "type": "string",
+          "metadata": {
+            "description": "Effect of the policy",
+            "displayName": "Effect"
+          },
+          "allowedValues": ["Audit", "Deny"],
+          "defaultValue": "Audit"
+        },
+        "minimumTlsVersion": {
+          "type": "String",
+          "metadata": {
+            "displayName": "Minimum TLS Version",
+            "description": "Minimum version of TLS required to access data in this event hub"
+          },
+          "allowedValues": [
+            "1.0",
+            "1.1",
+            "1.2"
+          ],
+          "defaultValue": "1.2"
+        }
+      },
+      "policyRule": {
+        "if": {
+          "allOf": [
+            {
+              "field": "type",
+              "equals": "Microsoft.EventHub/namespaces"
+            },
+            {
+              "anyOf": [
+                {
+                  "field": "Microsoft.EventHub/namespaces/minimumTlsVersion",
+                  "notEquals": "[parameters('minimumTlsVersion')]"
+                },
+                {
+                  "field": "Microsoft.EventHub/namespaces/minimumTlsVersion",
+                  "exists": "false"
+                }
+              ]
+            }
+          ]
+        },
+        "then": {
+          "effect": "[parameters('effect')]"
+        }
+      }
+    }
+  }
+  

@@ -9,11 +9,11 @@ param (
     
 )
 
-$policies = Get-AzPolicyDefinition -Custom | Where-Object { $_.properties.Metadata.category -match 'AzSecure' }
+[Array]$policies = Get-AzPolicyDefinition -Custom | Where-Object { $_.properties.Metadata.category -match 'AzSecure' }
 
 $groupNames = $policies.properties.Metadata.category | %{ ($_ -split '-')[1] } | Select-Object -Unique -Property @{ label='name'; expression={$_}} | convertto-json
 
-$policyDefinitions = @()
+[Array]$policyDefinitions = @()
 $initiativeParameters = New-Object -type psobject
 
 foreach ($policy in $policies) {
