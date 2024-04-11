@@ -5,7 +5,8 @@
     "mode": "All",
     "metadata": {
       "version": "1.0.0",
-      "category": "AzSecure-Storage"
+      "category": "AzSecure-Storage",
+      "ASC": "true"
     },
     "parameters": {
       "maxAllowedPeriodInDays": {
