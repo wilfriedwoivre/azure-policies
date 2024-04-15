@@ -1,0 +1,28 @@
+{
+    "properties": {
+        "displayName": "AzSecure-Monitor-DenyDiagnosticsSettingRemoval",
+        "description": "Deny the removal of diagnostic settings",
+        "mode": "All",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "AzSecure-Monitor",
+            "ASC": "true"
+        },
+        "parameters": {
+        },
+        "policyRule": {
+            "if": {
+                "field": "type",
+                "equals": "Microsoft.Insights/diagnosticSettings"
+            },
+            "then": {
+                "effect": "denyAction",
+                "details": {
+                    "actionNames": [
+                        "delete"
+                    ]
+                }
+            }
+        }
+    }
+}
